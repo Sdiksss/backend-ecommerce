@@ -17,7 +17,8 @@ const create = catchError(async(req, res) => {
         lastName,
         email, 
         password: encriptedPassword,
-        gender
+        gender,
+        role: 'user'
     });
     return res.status(201).json(result);
 });
@@ -67,6 +68,27 @@ const login = catchError(async(req, res) => {
 const me = catchError(async(req, res)=> {
     return res.json(req.user)
 })
+
+
+
+// async function createAdmin() {
+//   const hashedPassword = await bcrypt.hash('Admin1234', 10);
+
+//   await User.create({
+//     firstName: 'Admin',
+//     lastName: 'Principal',
+//     email: 'admin@example.com',
+//     password: hashedPassword,
+//     gender: 'OTHER',
+//     role: 'admin' // fuerza el rol
+//   });
+
+//   console.log('Admin creado con éxito');
+// }
+
+// createAdmin();
+
+
 
 module.exports = {
     getAll,

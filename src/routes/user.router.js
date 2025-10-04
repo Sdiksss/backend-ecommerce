@@ -1,11 +1,12 @@
 const { getAll, create, getOne, remove, update, login, me } = require('../controllers/user.controllers');
 const express = require('express');
 const verifyJWT = require('../utils/verifyJWT');
+const roleAuth = require('../utils/roleAuth')
 
 const userRouter = express.Router();
 
 userRouter.route('/users')
-    .get(verifyJWT, getAll)
+    .get(verifyJWT, roleAuth('admin'), getAll)
     .post(create);
 
 userRouter.route('/users/login')

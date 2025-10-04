@@ -26,6 +26,11 @@ const User = sequelize.define('user', {
         type: DataTypes.ENUM(['MALE', 'FEMALE', 'OTHER']),
         allowNull: false
     },
+    role: {
+        type: DataTypes.ENUM(['admin', 'user']),
+        allowNull: false,
+        defaultValue: 'user'
+    },
     //categoryId
 });
 
